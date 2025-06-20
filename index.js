@@ -22,6 +22,11 @@ app.use(express.json());
 app.use(rateLimit({ windowMs: 60 * 1000, max: 60 }));
 app.use(authMiddleware);
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+
 app.use('/disasters', disasterRoutes(io));
 app.use('/geocode', geocodeRoutes);
 app.use('/verify', verifyRoutes);
